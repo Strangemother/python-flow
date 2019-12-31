@@ -13,11 +13,11 @@ def reset(pk=None):
     u.reset()
 
 
-def main():
-    print('Submitting flow to main.submit_flow', f)
+def main(flow_id=3):
+    print('Submitting flow to main.submit_flow', flow_id)
     #mac.submit_flow(f)
-    reset(2)
-    mac.submit_flow(2, 5, telephone='ert')
+    reset(flow_id)
+    mac.submit_flow(flow_id, 5, telephone='ert')
 
 def reflow(*a, **kw):
     """Resend the flow entity.
