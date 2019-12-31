@@ -49,18 +49,22 @@ class TaskResult(models.Model):
     def __str__(self):
         return f'{self.key} - {self.result[0:100]}...'
 
+
 class TaskConnection(models.Model):
     owner = models.CharField(max_length=255, null=True, blank=True)
     task_id = models.CharField(max_length=255, null=True, blank=True)
-
+    complete = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.owner} - {self.task_id}'
+
 
 class Flow(models.Model):
     routine = models.ForeignKey(Routine, on_delete=models.CASCADE)
     state = models.CharField(max_length=255, null=True, blank=True)
     position = models.IntegerField(default=0)
+
+    spawn = models.ManyToManyField(TaskConnection, blank=True)
     stores = models.ManyToManyField(TaskResult, blank=True)
     owner = models.CharField(max_length=255, null=True, blank=True)
     complete = models.BooleanField(default=False)
