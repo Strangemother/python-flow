@@ -84,8 +84,6 @@ def post_execute_hook(task, task_value, exc):
     # Post-execute hooks are passed the task, the return value (if the task
     # succeeded), and the exception (if one occurred).
     log('!! Task complete', task, "\n", task_value)
-    if exc is not None:
-        log('Task "%s" failed with error: %s!' % (task.id, exc))
     # v = vv.report(10)
     if isinstance(task_value, engine.Signal):
         signal_response(task, task_value)
@@ -118,10 +116,20 @@ def store_subtask_and_contine(task, sig_result):
     flow = models.Flow.objects.get(owner=pid)
     #make_connection(pid, task.id)
 
-    log('resubmitting', flow.id, dir(sig_result))
-    current_task = engine.get_current_task(flow)
+    log('resubmitting', flow.id, flow.state, sig_result)
+    try:
+        current_task = engine.get_current_task(flow)
+    except IndexError as e:
+        log(f'!! Cannot resubmit "{sig_result.name}" due to IndexError {e}')
+        current_task = None
+        if sig_result.name == 'spawn_result':
+            # The last action was a long-process.
+            # Therefore yield the last Task in the flow
+            log('... However, spawn_result - Testing the last flow task')
+            current_task = engine.get_routine_task(flow.routine, -1)
+
     result = sig_result.result
-    engine._save_flow_and_step(flow, result, current_task)
+    engine.store_flow_and_step(flow, current_task, result, )
     parent_args = sig_result._args
     parent_kwargs = sig_result._kwargs
     submit_flow(flow.id, *parent_args, **parent_kwargs)
