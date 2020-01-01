@@ -10,14 +10,22 @@ from huey import SqliteHuey
 from machine import django_connect
 django_connect.safe_bind()
 
-from machine import engine, models
-
+from machine import engine, models, create
 from machine.log import p_cyan_log
 log = p_cyan_log('main')
 
 
 # The remote running lib.
 huey = SqliteHuey(filename='sm-huey.db')
+
+
+def submit_create_flow(routine, *a, routine_name=None, init_flow_position=0, **kw):
+    """Start the processing of a new flow given the _routine_ to process.
+    Return a tuple of the newly created flow and flow task ID.
+    """
+    flow = create.create_flow(routine, init_flow_position, routine_name)
+    fid = submit_flow(flow, *a, **kw)
+    return (flow, fid,)
 
 
 def submit_flow(flow_or_id, *a, **kw):
@@ -33,10 +41,10 @@ def submit_flow(flow_or_id, *a, **kw):
         submit_flow(1)
         submit_flow(flow)
     """
-    flow = flow_or_id
-    if isinstance(flow_or_id, int):
-        flow = models.Flow.objects.get(pk=flow_or_id)
-
+    # flow = flow_or_id
+    # if isinstance(flow_or_id, int):
+    #     flow = models.Flow.objects.get(pk=flow_or_id)
+    flow = get_flow(flow_or_id)
     # offload to online
     res = run_flow(flow.pk, *a, **kw)
     task_id = res.id
@@ -50,8 +58,9 @@ def run_flow(flow_id, *a, **kw):
     """Running within the machine context, accept the flow id, gather a django
     Flow model and run `engine.run_all_flow(flow)`.
     """
-    log('Run a huey flow', flow_id, a, kw)
-    flow = models.Flow.objects.get(pk=flow_id)
+    flow = get_flow(flow_id)
+    log('+ Task', flow.routine.name, a, kw)
+    #flow = models.Flow.objects.get(pk=flow_id)
     # The next action is given back though the rpc context and captured by
     #  signals. All content should be picklable.
     # The next action may be a huey task or a simple value marking
@@ -85,8 +94,23 @@ def post_execute_hook(task, task_value, exc):
     # succeeded), and the exception (if one occurred).
     log('!! Task complete', task, "\n", task_value)
     # v = vv.report(10)
+    #
+
     if isinstance(task_value, engine.Signal):
         signal_response(task, task_value)
+
+    if exc is not None:
+        log('ERROR', exc)
+        flow = models.Flow.objects.get(owner=task.id)
+        engine.flow.fail_flow(flow, exc, task)
+        return False
+
+
+def get_flow(flow_or_id):
+    flow = flow_or_id
+    if isinstance(flow_or_id, int):
+        flow = models.Flow.objects.get(pk=flow_or_id)
+    return flow
 
 
 def signal_response(task, sig_result):
@@ -99,7 +123,6 @@ def signal_response(task, sig_result):
     if hasattr(sig_result, 'spawn'):
         spawn_task(task, sig_result)
         # Add the subtask id to the parent
-
     else:
         log('x  Signal has no spawn "signal.spawn"', sig_result)
 
@@ -129,7 +152,8 @@ def store_subtask_and_contine(task, sig_result):
             current_task = engine.get_routine_task(flow.routine, -1)
 
     result = sig_result.result
-    engine.store_flow_and_step(flow, current_task, result, )
+    #engine.store_flow_and_step(flow, current_task, result, )
+    engine.flow.store_and_step(flow, current_task, result, )
     parent_args = sig_result._args
     parent_kwargs = sig_result._kwargs
     submit_flow(flow.id, *parent_args, **parent_kwargs)
@@ -155,32 +179,37 @@ def make_connection(owner_id, task_id):
     return con
 
 
-def spawn_task(task, sig_result):
+def spawn_task(orig_task, sig_result):
     args = getattr(sig_result, 'args', ())
     kwargs = getattr(sig_result, 'kwargs', {})
     log('^  spawn', sig_result.spawn, args, kwargs)
 
-    _args = getattr(sig_result, '_args', ())
-    _kwargs = getattr(sig_result, '_kwargs', {})
 
     if 'parent_id' in kwargs:
         log('   spawn had an extra "parent_id" argument', kwargs)
         del kwargs['parent_id']
 
-    task_job = run_sub_task_script(
+    # _args = getattr(sig_result, '_args', ())
+    # _kwargs = getattr(sig_result, '_kwargs', {})
+    _spawn_task = run_sub_task_script(
         sig_result.spawn,
         *args, **kwargs,
-        parent_id=task.id,
-        parent_args=_args,
-        parent_kwargs=_kwargs,
+        parent_id=orig_task.id,
+        parent_args=getattr(sig_result, '_args', ()),
+        parent_kwargs=getattr(sig_result, '_kwargs', {}),
         )
 
-    log('^  Spawn ID', task_job.id)
+    log('^  Spawn ID', _spawn_task.id)
 
     # add the new Task connection to the owner task(flow by task id.)
     # without a complete flag.
-    add_spawn_to_flow(task, task_job)
-    return task_job
+    flow, conn = create.flow_task_connection(orig_task, _spawn_task)
+    if flow is not None:
+        log('x  Attemping to access flow failed due to DNI:', task.id)
+    else:
+        log('*  Good. Spawn saved against flow.')
+
+    return _spawn_task
 
 
 def add_spawn_to_flow(task, task_job):
@@ -194,3 +223,5 @@ def add_spawn_to_flow(task, task_job):
         log('*  Good. Spawn saved against flow.')
     except models.Flow.DoesNotExist:
         log('x  Attemping to access flow failed due to DNI:', task.id)
+
+    return conn

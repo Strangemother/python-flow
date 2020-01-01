@@ -13,6 +13,17 @@ class DefaultAdmin(admin.ModelAdmin):
 
 
 @admin.register(
+    models.TaskError,
+    )
+class TaskErrorAdmin(admin.ModelAdmin):
+    list_display = (
+            'task_id',
+            'task_key',
+            'result',
+        )
+
+
+@admin.register(
     models.Flow
     )
 class FlowAdmin(admin.ModelAdmin):

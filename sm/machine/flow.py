@@ -35,7 +35,10 @@ def set_flow_state(flow, state):
     return flow.save()
 
 
-def fail_flow(flow, res, task):
+def fail_flow(flow, exc, task):
+    log(f'A Fatal error renders this flow a FAIL: "{flow.pk}"')
+    key = flow.get_current_task().key
+    flow.add_exception(task.id, key=key, exception=exc)
     set_flow_fail(flow)
 
 
@@ -95,6 +98,7 @@ def store_flow_and_step(flow, task, result):
         set_flow_done(flow)
     flow.save()
 
+store_and_step = store_flow_and_step
 
 def store_task_result(flow, task, res):
     """Given a db Flow , db Task and raw result, save the result as a TaskResult
@@ -166,7 +170,6 @@ def step_check_continue_flow(flow, *a, **kw):
     is_false = isinstance(res, bool) and (res is False)
     if is_false:
         set_flow_wait(flow)
-
         log('  Check returned bool "False", will not continue')
         return task, wait(reason=f'check assert ready: {not is_false}')
 
@@ -178,11 +181,11 @@ def step_check_continue_flow(flow, *a, **kw):
             set_flow_state(flow, res.state)
             store_task_result(flow, task, res)
             return task, res
-    log('  check good - save flow step and continue', res)
 
+    log('  check good - save flow step and continue', res)
     set_flow_running(flow)
 
-    _save_flow_and_step(flow, res, task)
+    save_flow_result_and_step(flow, res, task)
     return task, res
 
 

@@ -2,12 +2,14 @@
 of a django environment. Each function expects django db models.
 """
 from machine.flow import *
+from machine import flow
+
 from machine.signal import *
 # from machine.routine import *
 from machine.script import *
 from machine.task import *
 from machine.log import p_red_log
-
+#from machine import create
 log = p_red_log('engine')
 
 
