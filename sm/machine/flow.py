@@ -63,10 +63,19 @@ def run_all_flow(flow, *a, **kw):
         return ()
 
     log('  \nRun all flow.')
+    flow_results = {}
+    if 'all_flow_results' in kw:
+        flow_results = kw['all_flow_results']
+        print('run_all_flow - Given all_flow_results.', flow_results)
+        del kw['all_flow_results']
+
     while run:
         # The just ran task and its immediate result.
-        task, result = run_flow_step(flow, *a, **kw)
+        task, result = run_flow_step(flow, *a,
+                all_flow_results=flow_results, **kw)
 
+        # (Pdb) type(task)
+        # <class 'machine.models.Task'>
         run = flow.complete is False
         # capture stop events here
         # and return early if required.
@@ -76,11 +85,14 @@ def run_all_flow(flow, *a, **kw):
             stop = signal_check(flow, task, result)
             run = not stop
             # edit the signal for the post-hook digest
-            result.flow_result = task_res_tuple
+            #result.flow_result = task_res_tuple
             log('decorating the signal with loop args', a, kw)
             result._args = a
             result._kwargs = kw
+            result.all_flow_results = flow_results
             return result
+        key = task.key
+        flow_results[key] = result
         task_res_tuple += (result, )
     return task_res_tuple
 
@@ -141,7 +153,7 @@ def run_flow_step(flow, *a, **kw):
     return step_continue_flow(flow, *a, **kw)
 
 
-def step_check_continue_flow(flow, *a, **kw):
+def step_check_continue_flow(flow, *a, all_flow_results=None, **kw):
     """Reassert the current flow task by performing checks
     through the Task methods. If successful the Task asserts True,
     the flow is _stepped_ and the next task is run.
@@ -161,7 +173,7 @@ def step_check_continue_flow(flow, *a, **kw):
     set_flow_check(flow)
 
     log('  Assert a test of the current task.', TaskClass)
-    res = TaskClass().check(*a, **kw)
+    res = TaskClass(all_flow_results=all_flow_results).check(*a, **kw)
 
     # fail_flow(flow, res, task)
 

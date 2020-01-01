@@ -11,6 +11,10 @@ from machine import django_connect
 django_connect.safe_bind()
 
 from machine import engine, models, create
+from machine.flow import run_all_flow, store_flow_and_step, fail_flow, store_and_step
+from machine.script import run_script
+from machine.signal import Signal, spawn_result
+from machine.task import get_current_task, get_routine_task
 from machine.log import p_cyan_log
 log = p_cyan_log('main')
 
@@ -46,6 +50,7 @@ def submit_flow(flow_or_id, *a, **kw):
     #     flow = models.Flow.objects.get(pk=flow_or_id)
     flow = get_flow(flow_or_id)
     # offload to online
+    print('== Submit flow', kw)
     res = run_flow(flow.pk, *a, **kw)
     task_id = res.id
     flow.owner = task_id
@@ -65,7 +70,7 @@ def run_flow(flow_id, *a, **kw):
     #  signals. All content should be picklable.
     # The next action may be a huey task or a simple value marking
     #  the end of the flow.
-    flow_result = engine.run_all_flow(flow, *a, **kw)
+    flow_result = run_all_flow(flow, *a, **kw)
     return flow_result
 
 
@@ -73,13 +78,15 @@ def run_flow(flow_id, *a, **kw):
 def run_sub_task_script(script, *a, parent_id=None,
     parent_args=None, parent_kwargs=None, **kw):
     log('Run sub task script', script, parent_id, a, kw)
-    res = engine.run_script(script, *a, **kw)
+    res = run_script(script, *a, **kw)
     #res = engine.run_script(script, *a, **kw)
-    return engine.spawn_result(
+    #return engine.spawn_result(
+    return spawn_result(
         result=res,
         parent_id=parent_id,
         _args=parent_args,
         _kwargs=parent_kwargs,
+        all_flow_results=kw.get('all_flow_results', None)
         )
 
 
@@ -96,13 +103,14 @@ def post_execute_hook(task, task_value, exc):
     # v = vv.report(10)
     #
 
-    if isinstance(task_value, engine.Signal):
+    if isinstance(task_value, Signal):
         signal_response(task, task_value)
 
     if exc is not None:
         log('ERROR', exc)
         flow = models.Flow.objects.get(owner=task.id)
-        engine.flow.fail_flow(flow, exc, task)
+        fail_flow(flow, exc, task)
+        # engine.flow.fail_flow(flow, exc, task)
         return False
 
 
@@ -141,7 +149,8 @@ def store_subtask_and_contine(task, sig_result):
 
     log('resubmitting', flow.id, flow.state, sig_result)
     try:
-        current_task = engine.get_current_task(flow)
+        current_task = get_current_task(flow)
+        # current_task = engine.get_current_task(flow)
     except IndexError as e:
         log(f'!! Cannot resubmit "{sig_result.name}" due to IndexError {e}')
         current_task = None
@@ -149,13 +158,17 @@ def store_subtask_and_contine(task, sig_result):
             # The last action was a long-process.
             # Therefore yield the last Task in the flow
             log('... However, spawn_result - Testing the last flow task')
-            current_task = engine.get_routine_task(flow.routine, -1)
+            current_task = get_routine_task(flow.routine, -1)
+            # current_task = engine.get_routine_task(flow.routine, -1)
 
     result = sig_result.result
     #engine.store_flow_and_step(flow, current_task, result, )
-    engine.flow.store_and_step(flow, current_task, result, )
+    store_and_step(flow, current_task, result, )
     parent_args = sig_result._args
     parent_kwargs = sig_result._kwargs
+    all_flow_results = sig_result.all_flow_results
+    parent_kwargs.setdefault('all_flow_results', all_flow_results)
+
     submit_flow(flow.id, *parent_args, **parent_kwargs)
 
     # save the result in the given flow.
@@ -170,15 +183,6 @@ def store_subtask_and_contine(task, sig_result):
     # given content.
 
 
-def make_connection(owner_id, task_id):
-    con = models.TaskConnection(
-        owner=owner_id,
-        task_id=task_id
-    )
-    con.save()
-    return con
-
-
 def spawn_task(orig_task, sig_result):
     args = getattr(sig_result, 'args', ())
     kwargs = getattr(sig_result, 'kwargs', {})
@@ -189,6 +193,17 @@ def spawn_task(orig_task, sig_result):
         log('   spawn had an extra "parent_id" argument', kwargs)
         del kwargs['parent_id']
 
+    # TODO:
+    #
+    # The returned signal (from the previous task execution)
+    # should have the all_flow_results .
+    # Push this to the offload task, to allow pushing back later.
+    #
+    # LAter:
+    # At this point, capture the all_flow_results param
+    # stored (somewhere) through the spawn
+    afr = sig_result.all_flow_results
+
     # _args = getattr(sig_result, '_args', ())
     # _kwargs = getattr(sig_result, '_kwargs', {})
     _spawn_task = run_sub_task_script(
@@ -197,6 +212,7 @@ def spawn_task(orig_task, sig_result):
         parent_id=orig_task.id,
         parent_args=getattr(sig_result, '_args', ()),
         parent_kwargs=getattr(sig_result, '_kwargs', {}),
+        all_flow_results=afr,
         )
 
     log('^  Spawn ID', _spawn_task.id)
@@ -204,8 +220,8 @@ def spawn_task(orig_task, sig_result):
     # add the new Task connection to the owner task(flow by task id.)
     # without a complete flag.
     flow, conn = create.flow_task_connection(orig_task, _spawn_task)
-    if flow is not None:
-        log('x  Attemping to access flow failed due to DNI:', task.id)
+    if flow is None:
+        log('x  Attemping to access flow failed due to DNI:', orig_task.id)
     else:
         log('*  Good. Spawn saved against flow.')
 
@@ -216,7 +232,7 @@ def add_spawn_to_flow(task, task_job):
     # store the new spawn task to the owner flow as an ID connection
     # When the task is done - calling _post_, the parent_id is
     # this owner id, to continue a WAIT flow.
-    conn = make_connection(task.id, task_job.id)
+    conn = create.connection(task.id, task_job.id)
     try:
         flow_model = models.Flow.objects.get(owner=task.id)
         flow_model.spawn.add(conn)

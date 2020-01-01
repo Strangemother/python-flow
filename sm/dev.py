@@ -27,7 +27,7 @@ def main(flow_id=3):
     #mac.submit_flow(f)
     # reset(flow_id)
     # mac.submit_flow(flow_id, 5, telephone='ert')
-
+    crtf()
 
 def crt():
     """
@@ -49,18 +49,21 @@ def crt():
         )
     return mac.create.routine_tasks('bob', items)
 
+
 def crtf():
     # routine, tasks, flow.
     items = (
         'test.One',
         'test.Two',
         'test.Three',
+        'test.Spawn',
         'test.Four',
         'test.Five',
         )
     routine = mac.create.routine_tasks('crtf', items)
     flow = mac.create.flow(routine,)
-    mac.submit_flow(flow, egg=2)
+    res = mac.submit_flow(flow, egg=2)
+    print('CRTF Result', res)
 
     #mac.submit_create_flow(flow, egg=2)
 

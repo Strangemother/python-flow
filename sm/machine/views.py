@@ -1,3 +1,8 @@
+from datetime import datetime, timedelta
 from django.shortcuts import render
+from django.views.generic import TemplateView, ListView
+from . import models
 
-# Create your views here.
+
+class FlowListView(ListView):
+    model = models.Flow

@@ -24,11 +24,20 @@ def create_flow(routine, position=0, name=None):
     return flow
 
 
+def connection(owner_id, task_id):
+    con = models.TaskConnection(
+        owner=owner_id,
+        task_id=task_id
+    )
+    con.save()
+    return con
+
+
 def flow_task_connection(task, task_job):
     # store the new spawn task to the owner flow as an ID connection
     # When the task is done - calling _post_, the parent_id is
     # this owner id, to continue a WAIT flow.
-    conn = make_connection(task.id, task_job.id)
+    conn = connection(task.id, task_job.id)
     try:
         flow_model = models.Flow.objects.get(owner=task.id)
         flow_model.spawn.add(conn)
