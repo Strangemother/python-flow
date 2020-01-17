@@ -1,0 +1,17 @@
+<h1>Flow {{ object.pk }}</h1>
+
+<ul>
+    <li>State: {{ object.state }}</li>
+    <li>Position: {{ object.position }}</li>
+    <li>Size: {{ object.get_tasks|length }}</li>
+    <li>Spawn Count: {{ object.spawn.count }}</li>
+    <li>Errors: {{ object.errors.count }}</li>
+    <li>Finished: {{ object.complete }}</li>
+</ul>
+
+<h2>Routine {{ object.routine.name }}</h2>
+<ol>
+    {% for task in object.get_tasks %}
+        <li>{{ task.name }} - {{ task.script }} - </li>
+    {% endfor %}
+</ol>
