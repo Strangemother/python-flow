@@ -39,7 +39,7 @@ def spawn_result(**kw):
 def spawn(**kw):
     r = Signal(name='spawn',
         stop_flow=True,
-        state='WAIT',
+        state='SPAWN',
         spawn=kw.get('task'),
         **kw)
     return r

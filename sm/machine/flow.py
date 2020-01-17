@@ -132,6 +132,7 @@ def reset_flow(flow):
     flow.complete = False
     flow.owner = None
     flow.stores.clear()
+    flow.spawn.clear()
     flow.save()
 
 

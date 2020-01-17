@@ -99,6 +99,7 @@ class Flow(models.Model):
     errors = models.ManyToManyField(TaskError, blank=True)
     owner = models.CharField(max_length=255, null=True, blank=True)
     complete = models.BooleanField(default=False)
+    #post_clean = models.BooleanField(default=False)
 
     def get_tasks(self):
         return self.routine.ordered_tasks()
