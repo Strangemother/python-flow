@@ -27,7 +27,7 @@ def main(flow_id=3):
     #mac.submit_flow(f)
     # reset(flow_id)
     # mac.submit_flow(flow_id, 5, telephone='ert')
-    crtf()
+    # crtf()
 
 def crt():
     """

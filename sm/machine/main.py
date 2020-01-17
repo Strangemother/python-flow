@@ -221,7 +221,7 @@ def spawn_task(orig_task, sig_result):
     # without a complete flag.
     flow, conn = create.flow_task_connection(orig_task, _spawn_task)
     if flow is None:
-        log('x  Attemping to access flow failed due to DNI:', orig_task.id)
+        log('x  Attemping to access flow failed due to "Does not Exist":', orig_task.id)
     else:
         log('*  Good. Spawn saved against flow.')
 

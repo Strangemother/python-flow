@@ -33,11 +33,13 @@ class Spawn(Task):
 class SpawnPerform(Task):
 
     def perform(self, *a, **kw):
-        time.sleep(2)
-        return {'spawn_result': 101}
+        time.sleep(15)
+        kw.update({'spawn_result': 101})
+        return kw
 
 
 class Four(Three):
+
     def perform(self, *a, **kw):
         # x + 100
         return { 'four': 10 }

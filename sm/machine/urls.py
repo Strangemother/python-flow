@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     #path('', admin.site.urls),
-    path('', views.FlowListView.as_view(), name='flow-list')
+    path('flows/', views.FlowListView.as_view(), name='flow-list'),
+    path('flows/<slug:pk>/', views.FlowDetailView.as_view(), name='flow-detail'),
 ]
