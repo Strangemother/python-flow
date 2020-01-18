@@ -70,6 +70,79 @@ run_id = submit_flow(db_flow) # or int. db_flow.pk
 # == Submit flow XXX
 ```
 
+### Create Flow
+
+You can generate a complete `Flow` using the script strings. This saves the extra step of generating and assigning a `Routine`. However this is designed to create routines on existing Task scripts. As such, if you provide a script string of which is not a readt db `Task`, the Routine will not contain the task.
+
+```py
+items = (
+    'test.One',
+    'test.Two',
+    'prod.RealEmail', # Is not a task in the db.
+    'test.Three',
+)
+flow = create.flow(items, safe=True)
+flow.get_tasks()
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Users\jay\Documents\projects\state-machine\sm\machine\models.py", line 105, in get_tasks
+    return self.routine.ordered_tasks()
+  File "C:\Users\jay\Documents\projects\state-machine\sm\machine\models.py", line 50, in ordered_tasks
+    ordered += (tasks[wo.key],)
+KeyError: 'prod.RealEmail'
+```
+
+If you provide `safe=False`, the missing script is created as a DB Task. Therefore if the script `contrib/task_prod.py::RealEmail` exists, it will execute:
+
+```py
+items = (
+    'test.One',
+    'test.Two',
+    'prod.RealEmail', # Is not a task in the db.
+    'test.Three',
+)
+flow = create.flow(items, safe=False, name='unique_thing')
+flow.get_tasks()
+(<Task: test.One - "test.One">, <Task: test.Two - "test.Two">, <Task: test.Wait - "test.Wait">, <Task: prod.RealEmail - "prod.RealEmail">, <Task: test.Three - "test.Three">)
+```
+
+Note, If the given task `prod.RealEmail` does not exist as a script, the flow will fail:
+
+```py
+>>> mac.submit_flow(flow)
+# == Submit flow.
+'d22ad58a-337a-427a-a62a-d429c917259b'
+```
+
+Fail `ModuleNotFoundError` due to missing Task:
+
+```bash
+main >> + Task foo () {}
+flow >>
+Run all flow.
+flow >>   run_flow_step None
+flow >>   step_continue_flow
+flow >>   Saving result test.One
+flow >>   run_flow_step RUNNING
+flow >>   step_continue_flow
+flow >>   Saving result test.Two
+flow >>   run_flow_step RUNNING
+flow >>   step_continue_flow
+[2020-01-18 04:11:24,521] ERROR:huey:DummyThread-1:Unhandled exception in task d22ad58a-337a-427a-a62a-d429c917259b.
+Traceback (most recent call last):
+  # ... snip ...
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 965, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'machine.scripts.task_prod'
+main >> !! Task complete machine.main.run_flow: d22ad58a-337a-427a-a62a-d429c917259b
+ None
+main >> ERROR No module named 'machine.scripts.task_prod'
+flow >> A Fatal error renders this flow a FAIL: "68"
+```
+
 
 ## Class Based
 

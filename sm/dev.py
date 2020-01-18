@@ -22,8 +22,10 @@ def new_flow():
     print('Submitted')
 
 
-def main(flow_id=3):
-    print('Submitting flow to main.submit_flow', flow_id)
+def main(flow_id=69):
+    print('Submitting flow to main.submit_flow')
+    mac.submit_flow(flow_id)
+    #return sleep_flow()
     #mac.submit_flow(f)
     # reset(flow_id)
     # mac.submit_flow(flow_id, 5, telephone='ert')
@@ -48,6 +50,20 @@ def crt():
         'talk.Twice',
         )
     return mac.create.routine_tasks('bob', items)
+
+
+from machine import create
+
+def sleep_flow():
+    items = (
+        'test.One',
+        'test.Two',
+        'test.Wait',
+        'test.Three',
+    )
+    flow = create.flow(items, safe=False)
+    mac.submit_flow(flow)
+    return flow
 
 
 def crtf():

@@ -1,7 +1,19 @@
+"""The create functions help generate Task, Routine and Flow models without
+using simpler strings and structures.
+These functions create the required database entities of which can be created
+through the django admin.
+
+    from machine import create
+
+    create.flow()
+    create.tasks()
+    create.routine()
+"""
+
 from machine import models
 
 
-def create_flow(routine, position=0, name=None):
+def create_flow(routine, position=0, name=None, safe=True,):
     """
     Create a new flow instance using the given Routine and optional position.
     The routine is fetched or creaed and applied to a newly created Flow
@@ -15,7 +27,7 @@ def create_flow(routine, position=0, name=None):
         # name
         routine = Ro.get(name=routine)
     elif isinstance(routine, (tuple, list)):
-        routine = create_routine(name, routine)
+        routine = create_routine(name, routine, safe=safe)
     flow = models.Flow(
             routine=routine,
             position=position,
@@ -52,12 +64,15 @@ def create_routine_tasks(name, items):
     return create_routine(name, keys)
 
 
-def create_routine(name, scripts):
+def create_routine(name, scripts, safe=True):
     """Create a routine with the given name and list of task keys.
     Each key resolves a Task instance applied in-order.
     Return the newly created routine
     """
-    tasks = models.Task.objects.filter(key__in=scripts)
+    if safe:
+        tasks = models.Task.objects.filter(key__in=scripts)
+    else:
+        tasks = create_tasks(scripts)
     weights = tuple((i, k) for i, k in zip(range(len(scripts)), scripts))
 
     wms = ()

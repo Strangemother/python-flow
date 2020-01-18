@@ -115,6 +115,7 @@ class Flow(models.Model):
         self.errors.add(te)
         return te
 
+
     def task_result_class(self):
         return TaskResult
 

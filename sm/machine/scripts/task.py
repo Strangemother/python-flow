@@ -12,7 +12,7 @@ class Task(object):
         return self.all_flow_results
 
     def check(self, *a, **kw):
-        print('Perform check')
+        print('Perform check', self.__class__.__name__)
         return False
 
     def perform(self, *a, **kw):

@@ -50,12 +50,22 @@ def submit_flow(flow_or_id, *a, **kw):
     #     flow = models.Flow.objects.get(pk=flow_or_id)
     flow = get_flow(flow_or_id)
     # offload to online
-    print('== Submit flow', kw)
+    print('# == Submit flow', flow_or_id, kw)
     res = run_flow(flow.pk, *a, **kw)
     task_id = res.id
     flow.owner = task_id
     flow.save()
     return task_id
+
+def force_step_submit_flow(flow_or_id, *a, **kw):
+    # flow = flow_or_id
+    # if isinstance(flow_or_id, int):
+    #     flow = models.Flow.objects.get(pk=flow_or_id)
+
+    # offload to online
+    print('# == Force Step Submit flow', flow_or_id, kw)
+    kw['flow_force_step'] = True
+    return submit_flow(flow_or_id, *a, **kw)
 
 
 @huey.task()
@@ -72,6 +82,7 @@ def run_flow(flow_id, *a, **kw):
     #  the end of the flow.
     flow_result = run_all_flow(flow, *a, **kw)
     return flow_result
+
 
 
 @huey.task()

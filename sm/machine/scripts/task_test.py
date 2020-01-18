@@ -30,6 +30,23 @@ class Spawn(Task):
             task='test.SpawnPerform')
 
 
+class Sleep(Task):
+    def perform(self, *a, **kw):
+        count = kw.get('count', 3)
+        print('Sleep for', count)
+        time.sleep(count)
+        return dict(slept=count)
+
+
+class Wait(Task):
+
+    def perform(self, *a, **kw):
+        print('Run wait')
+        return wait(
+                reason='Wait for external'
+            )
+
+
 class SpawnPerform(Task):
 
     def perform(self, *a, **kw):

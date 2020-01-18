@@ -64,6 +64,7 @@ def run_all_flow(flow, *a, **kw):
 
     log('  \nRun all flow.')
     flow_results = {}
+
     if 'all_flow_results' in kw:
         flow_results = kw['all_flow_results']
         print('run_all_flow - Given all_flow_results.', flow_results)
@@ -145,7 +146,8 @@ def run_flow_step(flow, *a, **kw):
 
     log('  run_flow_step', flow.state)
     # At this point we can check the flow for a previous state.
-    if flow.state == 'WAIT':
+    ffs = kw.get('flow_force_step', False)
+    if flow.state == 'WAIT' and (ffs is not True):
         log('  Flow state is WAIT, checking the existing.')
         # The last task froze the flow.
         # Perform a pickup.
@@ -168,7 +170,14 @@ def step_check_continue_flow(flow, *a, all_flow_results=None, **kw):
     # task and position.
 
     #TaskClass = get_task_attached(flow)
-    task = get_routine_task(flow.routine, flow.position)
+
+    """
+    As flow is in 'WAIT', we want to check the Task of which actioned
+    the step. The position is incremented when a Task runs, as such
+    a 0 index pointer is the ordered task list -1.
+
+    """
+    task = get_routine_task(flow.routine, flow.position-1)
     TaskClass = import_task(task.script)
 
     set_flow_check(flow)
