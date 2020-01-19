@@ -3,14 +3,12 @@
 import os
 import time
 
-from gevent import monkey; monkey.patch_all()
+from machine import patch
+
 from huey import SqliteHuey
 
-
+from machine import models, create
 from machine import django_connect
-django_connect.safe_bind()
-
-from machine import engine, models, create
 from machine.flow import run_all_flow, store_flow_and_step, fail_flow, store_and_step
 from machine.script import run_script
 from machine.signal import Signal, spawn_result
@@ -56,6 +54,7 @@ def submit_flow(flow_or_id, *a, **kw):
     flow.owner = task_id
     flow.save()
     return task_id
+
 
 def force_step_submit_flow(flow_or_id, *a, **kw):
     # flow = flow_or_id

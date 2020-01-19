@@ -1,6 +1,6 @@
 from django.db import models
-from machine import engine
-
+#from machine import main as engine
+from machine import task as task_m, flow as flow_m
 
 class Task(models.Model):
     """A DB to script connection. A routine manages a list of tasks to
@@ -17,7 +17,7 @@ class Task(models.Model):
     # blocking = models.BooleanField(default=False)
 
     def run(self, *a, **kw):
-        res = engine.run_task(self, *a, **kw)
+        res = task_m.run_task(self, *a, **kw)
         return res
 
     def __str__(self):
@@ -38,7 +38,7 @@ class Routine(models.Model):
     tasks = models.ManyToManyField(Task)
 
     def __str__(self):
-        return f'{self.name}: {self.tasks.count()} tasks'
+        return f'{self.name}: {self.tasks.count()} tasks {self.weights.count()} weights'
 
     def ordered_tasks(self):
         """Given a Routine instance return a list of ordered tasks by weight
@@ -104,6 +104,11 @@ class Flow(models.Model):
     def get_tasks(self):
         return self.routine.ordered_tasks()
 
+    def length(self):
+        return self.routine.weights.count()
+
+        # return len(self.get_tasks())
+
     def get_current_task(self):
         return self.routine.task_at(self.position)
 
@@ -120,15 +125,15 @@ class Flow(models.Model):
         return TaskResult
 
     def run_step(self, *a, **kw):
-        res = engine.run_flow_step(self, *a, **kw)
+        res = flow_m.run_flow_step(self, *a, **kw)
         return res
 
     def run_all(self, *a, **kw):
-        res = engine.run_all_flow(self, *a, **kw)
+        res = flow_m.run_all_flow(self, *a, **kw)
         return res
 
     def reset(self):
-        res = engine.reset_flow(self)
+        res = flow_m.reset_flow(self)
         return res
 
     def __str__(self):

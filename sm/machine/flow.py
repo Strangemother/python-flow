@@ -106,7 +106,7 @@ def store_flow_and_step(flow, task, result):
     # flow.state = 'COMPLETE'
     store_task_result(flow, task, result)
     flow.position += 1
-    if flow.position >= flow.routine.tasks.count():
+    if flow.position >= flow.length():
         log('  Done.')
         set_flow_done(flow)
     flow.save()

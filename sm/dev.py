@@ -1,10 +1,10 @@
 #import head
 
-from machine import main as mac
+#from machine import main as mac
+from machine import engine
 from machine.models import Flow
 
 f = Flow.objects.first()
-
 
 def reset(pk=None):
     u = f
@@ -23,8 +23,10 @@ def new_flow():
 
 
 def main(flow_id=69):
-    print('Submitting flow to main.submit_flow')
-    mac.submit_flow(flow_id)
+    flow = create_sleepy_flow()
+    print('Submitting flow', flow)
+    engine.submit(flow)
+    #mac.submit_flow(flow_id)
     #return sleep_flow()
     #mac.submit_flow(f)
     # reset(flow_id)
@@ -53,6 +55,19 @@ def crt():
 
 
 from machine import create
+
+
+def create_sleepy_flow():
+    items = (
+        'test.Sleep',
+        'test.Sleep',
+        'test.Sleep',
+        'test.Sleep',
+    )
+
+    # pk == 72
+    return create.flow(items, safe=False, name='asleepy')
+
 
 def sleep_flow():
     items = (
