@@ -21,6 +21,20 @@ class Three(Task):
         return { 'three': 10 }
 
 
+
+class StartFlow(Task):
+    # start another flow
+    def perform(self, *a, **kw):
+        print('StartFlow, will spawn sleepy')
+        time.sleep(2)
+        return spawn(
+            spawn_value=55,
+            reason='Boot a new Flow',
+            routine='sleepy'
+            )
+
+
+
 class Spawn(Task):
 
     def perform(self, *a, **kw):

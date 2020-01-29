@@ -41,6 +41,7 @@ def spawn(**kw):
         stop_flow=True,
         state='SPAWN',
         spawn=kw.get('task'),
+        flow_routine=kw.get('routine'),
         **kw)
     return r
 

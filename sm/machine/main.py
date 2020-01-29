@@ -100,6 +100,35 @@ def run_sub_task_script(script, *a, parent_id=None,
         )
 
 
+@huey.task()
+def run_sub_flow(routine_name_or_flow, *a, parent_id=None,
+    parent_args=None, parent_kwargs=None, **kw):
+    name = kw.get('flow_name', parent_id)
+
+    if isinstance(routine_name_or_flow, str):
+        """Given a string, assume the name of an existing Routine.
+        Collect the routine from the DB and create a new flow.
+        """
+        routine = models.Routine.objects.get(name=routine_name_or_flow)
+        flow = create.flow(routine_name_or_flow, name=name)
+        print('New Flow', flow)
+    elif isinstance(routine_name_or_flow, int):
+        """Given an integer assume the flow already exists
+        """
+        flow = get_flow(routine_name_or_flow)
+        print('Collect Flow', flow)
+
+    log('Run sub flow', flow, parent_id, a, kw)
+    res = run_flow(flow, *a, **kw)
+    return spawn_result(
+        result=res.id,
+        parent_id=parent_id,
+        _args=parent_args,
+        _kwargs=parent_kwargs,
+        all_flow_results=kw.get('all_flow_results', None)
+        )
+
+
 @huey.on_startup()
 def open_db_connection():
     django_connect.safe_bind()
@@ -194,6 +223,51 @@ def store_subtask_and_contine(task, sig_result):
 
 
 def spawn_task(orig_task, sig_result):
+
+    if sig_result.spawn is not None:
+        return spawn_script(orig_task, sig_result)
+    elif sig_result.flow_routine is not None:
+        print('Execute another flow routine')
+        return spawn_flow(orig_task, sig_result)
+    else:
+        print('Signal result is unknown')
+        import pdb; pdb.set_trace()  # breakpoint e1176247 //
+
+
+
+def spawn_flow(orig_task, sig_result):
+    args = getattr(sig_result, 'args', ())
+    kwargs = getattr(sig_result, 'kwargs', {})
+    log('^  spawn.flow', sig_result.flow_routine, args, kwargs)
+
+
+    if 'parent_id' in kwargs:
+        log('   spawn had an extra "parent_id" argument', kwargs)
+        del kwargs['parent_id']
+
+    afr = sig_result.all_flow_results
+    _spawn_task = run_sub_flow(
+        sig_result.flow_routine,
+        *args, **kwargs,
+        parent_id=orig_task.id,
+        parent_args=getattr(sig_result, '_args', ()),
+        parent_kwargs=getattr(sig_result, '_kwargs', {}),
+        all_flow_results=afr,
+        )
+
+    log('^  Spawn ID', _spawn_task.id)
+
+    # add the new Task connection to the owner task(flow by task id.)
+    # without a complete flag.
+    flow, conn = create.flow_task_connection(orig_task, _spawn_task)
+    if flow is None:
+        log('x  Attemping to access flow failed due to "Does not Exist":', orig_task.id)
+    else:
+        log('*  Good. Spawn saved against flow.')
+
+    return _spawn_task
+
+def spawn_script(orig_task, sig_result):
     args = getattr(sig_result, 'args', ())
     kwargs = getattr(sig_result, 'kwargs', {})
     log('^  spawn', sig_result.spawn, args, kwargs)

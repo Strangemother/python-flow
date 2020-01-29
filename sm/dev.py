@@ -23,9 +23,12 @@ def new_flow():
 
 
 def main(flow_id=69):
-    flow = create_sleepy_flow()
-    print('Submitting flow', flow)
-    engine.submit(flow)
+
+    key = 74
+    # flow = create_sleepy_flow()
+    print('Submitting flow', key)
+    reset(key)
+    engine.submit(key)
     #mac.submit_flow(flow_id)
     #return sleep_flow()
     #mac.submit_flow(f)
