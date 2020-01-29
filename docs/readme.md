@@ -44,17 +44,17 @@ A Task class `machine.scripts.task.Task` provides a simple interface layer to co
 
 File `myapp.scripts.task_example`.
 
+```py
+import time
+from machine.scripts.task import Task
+class VeryLong(Task):
 
-    import time
-    from machine.scripts.task import Task
-    class VeryLong(Task):
-
-        def perform(self, seconds=8, *a, **kw):
-            log('    Perform very long task, seconds:', seconds)
-            time.sleep(seconds)
-            kw['very_long'] = seconds
-            return (a, kw, )
-
+    def perform(self, seconds=8, *a, **kw):
+        log('    Perform very long task, seconds:', seconds)
+        time.sleep(seconds)
+        kw['very_long'] = seconds
+        return (a, kw, )
+```
 
 For fun this code accepts some seconds and sleeps. Within the Django Admin, You'll create a new `machine.models.Task` specially with the `script` "`email.VeryLong`".
 
@@ -81,20 +81,87 @@ A DB Routine connects many DB Tasks (and their `script` attributes) to one order
 
 ## Flow
 
+A Flow runs tasks. Each task runs in order until the flow is complete. A task given to flow
+may be a `Task` model or a string, connecting to a folder of your `Task` classes:
+
+```py
+from machine import create
+string_tasks = (
+    'test.One',
+    'test.Two',
+    'test.Wait',
+    'test.Three',
+)
+flow = create.flow(string_tasks, safe=False, name='egg')
+flow.get_tasks()
+flow.pk
+# 3
+```
+
+Submit a flow to _run_ using the `engine.submit()`. You can provide the `flow` or its id:
+
+```py
+from machine import engine
+engine.submit(flow) # From above
+```
+
+## Understanding Flows
+
+The _flow machine_ is a conceptual grouping of values. A `Flow` runs a `Routine` of `Task` items storing `TaskResult` records if required, until the routine is finished and the flow ends. When creating a flow of tasks, under the hood the uses one repeatable Routine of Task code things to run.
+
+You can break down a flow into its 3 constituents:
+
+```py
+# Our scripts
+items = (
+    'test.One',
+    'test.Two',
+    'test.Three',
+    'test.Spawn',
+    'test.Four',
+    'test.Five',
+    )
+routine = mac.create.routine_tasks('id_of_routine', items)
+flow = mac.create.flow(routine)
+result = mac.submit_flow(flow, egg=2)
+print(result)
+```
+
 A DB Flow model binds a Routine sequence of execution and the result data from each Task and its `script`. Upon a _submit flow_ the flow state is `INIT` and sent to the `huey` queue. Upon each Task run the flow position index moved to the next task. The values are stored as a db `TaskResult`.
 
 A Flow will start within its own thread given any arguments be the instigating code. As this occurs asynchronously the methods to submit a flow may occur from any process without blocking. All Tasks receive the arguments given to a Flow.
 
 To run a Flow, generate a `machine.models.Flow` providing a chosen `Routine`. The submit Flow or id/pk to the machine for it to execute the tasks starting from `position` 0.
 
-    from machine import main
+```py
+from machine import main
 
-    flow = models.Flow(routine=example_routine)
-    flow.save()
+flow = models.Flow(routine=example_routine)
+flow.save()
 
-    main.submit_flow(flow, foo='bar', other=1)
-
-
-
+main.submit_flow(flow, foo='bar', other=1)
+```
 
 
+# Routine
+
+A `Routine` references many executable scripts as `Tasks` for a Flow to run. Consider it like a _group_ of tasks under one name. We can create a `Routine` and assign some scripts to run:
+
+```py
+from machine import engine
+
+items = (
+    'very.Spotty',
+    'wake.Ohio',
+    'being.Singing',
+    'talk.Twice',
+    )
+routine = engine.create.routine('bob', items)
+```
+
+Then use the Routine within a Flow:
+
+```py
+flow = engine.create.flow(routine)
+result = engine.submit_flow(flow, egg=2)
+```
