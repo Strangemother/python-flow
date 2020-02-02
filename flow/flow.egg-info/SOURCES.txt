@@ -1,0 +1,8 @@
+setup.py
+flow.egg-info/PKG-INFO
+flow.egg-info/SOURCES.txt
+flow.egg-info/dependency_links.txt
+flow.egg-info/entry_points.txt
+flow.egg-info/requires.txt
+flow.egg-info/top_level.txt
+flow.egg-info/zip-safe

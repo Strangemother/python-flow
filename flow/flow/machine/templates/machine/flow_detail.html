@@ -1,0 +1,24 @@
+{% extends "machine/base.html" %}
+{% block content %}
+
+<h1>Flow {{ object.pk }}</h1>
+
+<ul>
+    <li>State: {{ object.state }}</li>
+    <li>Position: {{ object.position }}</li>
+    <li>Size: {{ object.get_tasks|length }}</li>
+    <li>Spawn Count: {{ object.spawn.count }}</li>
+    <li>Errors: {{ object.errors.count }}</li>
+    <li>Finished: {{ object.complete }}</li>
+</ul>
+
+<h2>Routine {{ object.routine.name }}</h2>
+<ol>
+    {% for task in object.get_tasks %}
+        <li>
+            <a href="{% url 'task-detail' task.pk %}">{{ task.name }} - {{ task.script }}</a>
+        </li>
+    {% endfor %}
+</ol>
+
+{% endblock content %}

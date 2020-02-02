@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: flow
+Version: 0.1
+Summary: Simple Multiprocessing Queue
+Home-page: http://github.com/strangemother/flow
+Author: Jay Jagpal
+Author-email: jay@strangemother.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7

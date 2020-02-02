@@ -1,0 +1,1529 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sub",
+				"submit\t(dev.py)"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"patch",
+				"patch_conf\t(conf.py)"
+			],
+			[
+				"expe",
+				"expected_kwargs\tabc"
+			],
+			[
+				"allow",
+				"all_flow_results\t(flow.py)"
+			],
+			[
+				"orig",
+				"orig_task\tabc"
+			],
+			[
+				"parent",
+				"parent_id\tabc"
+			],
+			[
+				"routinenam",
+				"routine_name_or_flow\tabc"
+			],
+			[
+				"routinena",
+				"routine_name_or_flow\tabc"
+			],
+			[
+				"routine",
+				"routine_name\tabc"
+			],
+			[
+				"flow_",
+				"flow_routine\tabc"
+			],
+			[
+				"or",
+				"orig_task\tabc"
+			],
+			[
+				"creats",
+				"create_sleepy_flow\tabc"
+			],
+			[
+				"flo",
+				"flow_force_step\t(flow.py)"
+			],
+			[
+				"db_",
+				"db_flow\tabc"
+			],
+			[
+				"exam",
+				"example.Long\tabc"
+			],
+			[
+				"scip",
+				"script\tabc"
+			],
+			[
+				"help",
+				"help_text='A\tabc"
+			],
+			[
+				"bla",
+				"blank=True\tabc"
+			],
+			[
+				"null",
+				"null=True\tabc"
+			],
+			[
+				"count",
+				"countries2\tabc"
+			],
+			[
+				"countr",
+				"countries\tabc"
+			],
+			[
+				"get_c",
+				"get_countries\tabc"
+			],
+			[
+				"facili",
+				"facility\tabc"
+			],
+			[
+				"cace",
+				"cached\tabc"
+			],
+			[
+				"loc",
+				"locations\tabc"
+			],
+			[
+				"fac",
+				"facilities\tabc"
+			],
+			[
+				"regio",
+				"region\t(vultr_results.json)"
+			],
+			[
+				"Other",
+				"OtherVultr\tabc"
+			],
+			[
+				"open_",
+				"open_json\t(fetch.py)"
+			],
+			[
+				"ma",
+				"mandatory\tabc"
+			],
+			[
+				"par",
+				"parameters\tabc"
+			],
+			[
+				"stac",
+				"stack_name\tabc"
+			],
+			[
+				"curr",
+				"current_item"
+			],
+			[
+				"current",
+				"current_block\tabc"
+			],
+			[
+				"currnet",
+				"current_block\tabc"
+			],
+			[
+				"ap",
+				"append"
+			],
+			[
+				"append",
+				"appendto\tabc"
+			],
+			[
+				"st",
+				"startswith\tabc"
+			],
+			[
+				"starts",
+				"startswith\t(resource.py)"
+			],
+			[
+				"Pa",
+				"Parameters\t(API - Vultr.com.html)"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"jq",
+				"jquery.com\t(jquery.min.js)"
+			],
+			[
+				"Sess",
+				"SessionSpy\tabc"
+			],
+			[
+				"requ",
+				"requests\tabc"
+			],
+			[
+				"reou",
+				"resource"
+			],
+			[
+				"path",
+				"path_resource\tabc"
+			],
+			[
+				"resour",
+				"resource_path\tabc"
+			],
+			[
+				"Re",
+				"Resource\tabc"
+			],
+			[
+				"name",
+				"namedtuple\tabc"
+			],
+			[
+				"reque",
+				"requestor\tabc"
+			],
+			[
+				"re",
+				"requestor\tabc"
+			],
+			[
+				"funckw",
+				"func_kwargs"
+			],
+			[
+				"func",
+				"func_args\tabc"
+			],
+			[
+				"call",
+				"call_func\tabc"
+			],
+			[
+				"_exe",
+				"_execute\tabc"
+			],
+			[
+				"own",
+				"owner_class\tabc"
+			],
+			[
+				"exec",
+				"executors\tabc"
+			],
+			[
+				"exe",
+				"executors\tabc"
+			],
+			[
+				"init",
+				"init_kwargs\tabc"
+			],
+			[
+				"ca",
+				"catch_all"
+			],
+			[
+				"create",
+				"create_decor\tabc"
+			],
+			[
+				"funk",
+				"func_kwargs\tabc"
+			],
+			[
+				"dec",
+				"decor_args\t(decor.py)"
+			],
+			[
+				"ini",
+				"init_kwargs\t(decor.py)"
+			],
+			[
+				"fil",
+				"filepath\tabc"
+			],
+			[
+				"sotre",
+				"store_json\tabc"
+			],
+			[
+				"sroe",
+				"store_json\tabc"
+			],
+			[
+				"ope",
+				"open_json\tabc"
+			],
+			[
+				"decor_k",
+				"decor_kwargs\tabc"
+			],
+			[
+				"in",
+				"injected\tabc"
+			],
+			[
+				"cac",
+				"cache_filename"
+			],
+			[
+				"fun",
+				"func_kw\tabc"
+			],
+			[
+				"kw",
+				"kwargs"
+			],
+			[
+				"class",
+				"class_kwargs"
+			],
+			[
+				"classa",
+				"class_args"
+			],
+			[
+				"Class",
+				"ClassDecorator\tabc"
+			],
+			[
+				"func_",
+				"func_args\tabc"
+			],
+			[
+				"cache",
+				"cache_catch\tabc"
+			],
+			[
+				"flwo",
+				"flow_results\tabc"
+			],
+			[
+				"runall",
+				"run_all_flow"
+			],
+			[
+				"pa",
+				"parent_kwargs\tabc"
+			],
+			[
+				"sig",
+				"signal\t(main.py)"
+			],
+			[
+				"all",
+				"all_flow_results\tabc"
+			],
+			[
+				"flow_er",
+				"flow_results\tabc"
+			],
+			[
+				"fail",
+				"fail_flow\t(flow.py)"
+			],
+			[
+				"se_",
+				"set_flow_fail\t(flow.py)"
+			],
+			[
+				"cre",
+				"create_flow\tabc"
+			],
+			[
+				"crea",
+				"create_task"
+			],
+			[
+				"create_rou",
+				"create_routine_tasks\tabc"
+			],
+			[
+				"w",
+				"wms\tabc"
+			],
+			[
+				"wei",
+				"weights\tabc"
+			],
+			[
+				"very",
+				"very_long\t(task_email.py)"
+			],
+			[
+				"spa",
+				"spawn_result\tabc"
+			],
+			[
+				"get_",
+				"get_routine_task\t(engine.py)"
+			],
+			[
+				"cu",
+				"current_task\tabc"
+			],
+			[
+				"spaw",
+				"spawn_result\tabc"
+			],
+			[
+				"flow",
+				"flow_id\tabc"
+			],
+			[
+				"Tu",
+				"True\tabc"
+			],
+			[
+				"submi",
+				"submit_flow\tabc"
+			],
+			[
+				"task_",
+				"task_value"
+			],
+			[
+				"spw",
+				"spawn_result\tabc"
+			],
+			[
+				"pare",
+				"parent_id\tabc"
+			],
+			[
+				"k",
+				"kwargs\tabc"
+			],
+			[
+				"set_",
+				"set_flow_state\tabc"
+			],
+			[
+				"set",
+				"set_flow_done\tabc"
+			],
+			[
+				"setfl",
+				"set_flow_running\tabc"
+			],
+			[
+				"setf",
+				"set_flow_wait\tabc"
+			],
+			[
+				"set_f",
+				"set_flow_check\tabc"
+			],
+			[
+				"res",
+				"result\tabc"
+			],
+			[
+				"run_al",
+				"run_all_flow\tabc"
+			],
+			[
+				"is",
+				"isinstance\tabc"
+			],
+			[
+				"run_f",
+				"run_flow_step\tabc"
+			],
+			[
+				"task",
+				"task_value\tabc"
+			],
+			[
+				"ress",
+				"results"
+			],
+			[
+				"run_",
+				"run_all\t(models.py)"
+			],
+			[
+				"taskclas",
+				"task_class"
+			],
+			[
+				"dja",
+				"django_connect\tabc"
+			],
+			[
+				"creat",
+				"create_filename\tabc"
+			],
+			[
+				"oper",
+				"operating_system\tabc"
+			],
+			[
+				"nae",
+				"nameset\tabc"
+			],
+			[
+				"load",
+				"loadouts\tabc"
+			],
+			[
+				"Prv",
+				"Providers\tabc"
+			],
+			[
+				"prov",
+				"provider\tabc"
+			],
+			[
+				"pr",
+				"provider\tabc"
+			],
+			[
+				"cl",
+				"cls\tabc"
+			],
+			[
+				"usec",
+				"user_accounts"
+			],
+			[
+				"ue",
+				"user_accounts\tabc"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "items = (\n    'test.One',\n    'test.Two',\n    'prod.RealEmail', # Is not a task in the db.\n    'test.Three',\n)\nflow = create.flow(items, safe=False, name='foo')\nflow.get_tasks()\n\n\nitems = (\n    'test.One',\n    'test.Two',\n    'test.Wait',\n    'test.Three',\n)\nflow = create.flow(items, safe=False, name='egg')\nflow.get_tasks()\n\nitems = (\n    'test.Sleep',\n    'test.Sleep',\n    'test.Sleep',\n    'test.Sleep',\n)\n\nflow = create.flow(items, safe=False, name='asleepy')\n\n\n\n\n\n",
+			"settings":
+			{
+				"buffer_size": 471,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"re",
+				"File: Rename"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"mov",
+				"File: Move"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"mo",
+				"File: Move"
+			],
+			[
+				"auto",
+				"AutoPEP8: Preview Changes"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"reanm",
+				"Rename File"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"lo",
+				"Convert Case: Lower Case"
+			],
+			[
+				"lowe",
+				"Convert Case: Lower Case"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"ren",
+				"File: Rename"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"uppeer",
+				"Convert Case: Upper Case"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"pep",
+				"AutoPEP8: Format Code"
+			],
+			[
+				"renam",
+				"File: Rename"
+			],
+			[
+				"mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"Rename",
+				"File: Rename"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"fold",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"code folding",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"code ",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"m",
+				"File: Move"
+			],
+			[
+				"godot",
+				"Set Syntax: GDScript (Godot Engine)"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"LOWE",
+				"Convert Case: Lower Case"
+			],
+			[
+				"quick",
+				"Git: Quick Commit (current file)"
+			],
+			[
+				"upl",
+				"SFTP: Upload File"
+			],
+			[
+				"CAN",
+				"SFTP: Cancel Upload"
+			],
+			[
+				"brow",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"canc",
+				"SFTP: Cancel Upload"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"com",
+				"Toggle Comment"
+			],
+			[
+				"comm",
+				"Toggle Comment"
+			],
+			[
+				"commen",
+				"Toggle Comment"
+			],
+			[
+				"loer",
+				"Convert Case: Lower Case"
+			],
+			[
+				"can",
+				"SFTP: Cancel Upload"
+			],
+			[
+				"jina",
+				"Set Syntax: HTML (Jinja2)"
+			],
+			[
+				"jinja",
+				"Set Syntax: HTML (Jinja2)"
+			],
+			[
+				"jav",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"javascript",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pytho",
+				"Set Syntax: Python"
+			],
+			[
+				"DELE",
+				"File: Delete"
+			],
+			[
+				"cop n",
+				"File: Copy Name"
+			],
+			[
+				"removep",
+				"Package Control: Remove Package"
+			],
+			[
+				"flake",
+				"User: Jump to next Flake8 Lint error"
+			],
+			[
+				"flak",
+				"User: Python Flake8 Lint"
+			],
+			[
+				"lint",
+				"User: Python Flake8 Lint"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"mult",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"spac",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"pyt",
+				"Set Syntax: Python"
+			]
+		],
+		"width": 448.0
+	},
+	"console":
+	{
+		"height": 194.0,
+		"history":
+		[
+			"view.run_command('under_caret')",
+			"view.run_command",
+			"view",
+			"os.system('cls')",
+			"os.system('clear')",
+			"import os",
+			"os.system('clear')",
+			"cls",
+			"clear",
+			"cl",
+			"clear",
+			"cls",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/models.py",
+		"/C/Users/jay/Documents/projects/state-machine/flask_consumer.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/create.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/main.py",
+		"/C/Users/jay/Documents/projects/state-machine/docs/readme.md",
+		"/C/Users/jay/Documents/projects/state-machine/sm/dev.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/patch.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/conf.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/views.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/sm/settings.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/forms.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/urls.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/manage.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/consumer.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/tests.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/flow.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/flow_list.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/scripts/task_test.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/task.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/engine.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/flow_form.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/django_connect.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/task_detail.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/task_list.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/routine_list.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/base.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/task_form.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/routine_detail.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/flow_detail.html",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/machine/index.html",
+		"/F/clients/strangemother/strangemother-site/site/strangemother/strangemother/urls.py",
+		"/F/clients/strangemother/strangemother-site/site/strangemother/strangemother/settings.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/signal.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/script.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/submit.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/scripts/task_email.py",
+		"/C/Users/jay/Documents/projects/state-machine/docs/Stepping.md",
+		"/F/clients/strangemother/strangemother-site/hosting/account/views.py",
+		"/C/Users/jay/Documents/projects/state-machine/docs/Script Task.md",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/scripts/task.py",
+		"/F/clients/strangemother/strangemother-site/hosting/users/README.md",
+		"/F/clients/strangemother/strangemother-site/hosting/locations/models.py",
+		"/F/clients/strangemother/strangemother-site/docs/hosting-services/README.md",
+		"/C/Users/jay/AppData/Roaming/Sublime Merge/Packages/User/Preferences.sublime-settings",
+		"/C/Users/jay/AppData/Roaming/Sublime Merge/Packages/User/Commit Message.sublime-settings",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/cache/states.csv",
+		"/F/clients/strangemother/strangemother-site/backbone/scratch_locations.json",
+		"/F/clients/strangemother/strangemother-site/hosting/sms/models.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/consolidate.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/cache/countries.csv",
+		"/F/clients/strangemother/strangemother-site/hosting/locations/README.md",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/cache/cities.csv",
+		"/F/clients/strangemother/strangemother-site/README.md",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/fetch.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/vultr_service/service.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/cache/all_locations.all_locations.json",
+		"/F/clients/strangemother/strangemother-site/backbone/dec.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/cache/get_locations.get_locations.json",
+		"/F/clients/strangemother/strangemother-site/backbone/resources/vultr_results.json",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/resource.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/api.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/decorator.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/run_consumer.bat",
+		"/C/Users/jay/Documents/projects/state-machine/sm/readme.md",
+		"/F/clients/strangemother/strangemother-site/structure.md",
+		"/F/clients/strangemother/strangemother-site/backbone/resources/vultr.yaml",
+		"/F/clients/strangemother/strangemother-site/vultr_results.json",
+		"/F/clients/strangemother/strangemother-site/backbone/docs/resource.md",
+		"/F/clients/strangemother/strangemother-site/vultr site/parsed.txt",
+		"/F/clients/strangemother/strangemother-site/vultr site/parse.js",
+		"/F/clients/strangemother/strangemother-site/convert_vultr.py",
+		"/F/clients/strangemother/strangemother-site/vultr site/API - Vultr.com.html",
+		"/F/clients/strangemother/strangemother-site/qr/qrcodejs-master/qrcodejs-master/jquery.min.js",
+		"/F/clients/strangemother/strangemother-site/backbone/resource.yaml",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/cache/Vultr.plans.list.json",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/admin.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/templates/flow_list.html",
+		"/C/Users/jay/Documents/projects/state-machine/small.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/post.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/log.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/routine.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/docs/readme.md",
+		"/C/Users/jay/Documents/projects/state-machine/requirements.txt",
+		"/C/Users/jay/Documents/projects/state-machine/notes.md",
+		"/F/clients/strangemother/strangemother-site/hosting/service_vultr/views.py",
+		"/F/clients/strangemother/strangemother-site/backbone/main.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/vultr_api.py",
+		"/F/clients/strangemother/strangemother-site/hosting/service_vultr/backbone.py",
+		"/C/Users/jay/Documents/projects/state-machine/run.bat",
+		"/F/clients/strangemother/strangemother-site/backbone/dev_digest.py",
+		"/F/clients/strangemother/strangemother-site/hosting/heavymetal/views.py",
+		"/F/clients/strangemother/strangemother-site/docs/digest thoughput architecture.md",
+		"/C/Users/jay/Documents/projects/state-machine/sm/head.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/vultr_service/create.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/provider.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/register.py",
+		"/F/clients/strangemother/strangemother-site/backbone/digest/cache/readme.md",
+		"/F/clients/strangemother/strangemother-site/digest/docs/methodology.md",
+		"/F/clients/strangemother/strangemother-site/digest/__init__.py",
+		"/F/clients/strangemother/strangemother-site/hosting/heavymetal/fetch.py",
+		"/F/clients/strangemother/strangemother-site/digest/fetch.py",
+		"/F/clients/strangemother/strangemother-site/digest.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/__init__.py",
+		"/F/clients/strangemother/strangemother-site/backbone/run_consumer_greenlet.bat",
+		"/F/clients/strangemother/strangemother-site/backbone/docs/tasks.md",
+		"/F/clients/strangemother/strangemother-site/backbone/provider_vultr.py",
+		"/F/clients/strangemother/strangemother-site/hosting/startscript/views.py",
+		"/F/clients/strangemother/strangemother-site/env3/Scripts/huey_consumer.py",
+		"/F/clients/strangemother/strangemother-site/backbone/example.py",
+		"/F/clients/strangemother/strangemother-site/hosting/sms/views.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/vultr_service/__init__.py",
+		"/F/clients/strangemother/strangemother-site/backbone/django_connect.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/txtlocal_service/__init__.py",
+		"/F/clients/strangemother/strangemother-site/hosting/heavymetal/create.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider_txtlocal.py",
+		"/F/clients/strangemother/strangemother-site/backbone/provider/vulter_service/create.py",
+		"/F/clients/strangemother/strangemother-site/hosting/head.py",
+		"/F/clients/strangemother/strangemother-site/backbone/consumer.py",
+		"/F/clients/strangemother/strangemother-site/hosting/heavymetal/models.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/demo.py",
+		"/C/Users/jay/Documents/projects/state-machine/env/Scripts/huey_consumer.py",
+		"/F/clients/strangemother/strangemother-site/state-machine/docs/long term state.md",
+		"/C/Users/jay/Documents/projects/state-machine/sm/sm/urls.py",
+		"/C/Users/jay/Documents/projects/state-machine/sm/machine/scripts/__init__.py",
+		"/F/clients/strangemother/strangemother-site/state-machine/alpha.py",
+		"/F/clients/strangemother/strangemother-site/hosting/bootstrap/structure/discover.py",
+		"/F/clients/strangemother/strangemother-site/state-machine/readme.md",
+		"/F/clients/strangemother/strangemother-site/hosting/account/admin.py"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 109.0,
+		"where_history":
+		[
+			"C:\\Users\\jay\\Documents\\projects\\state-machine\\sm\\",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"submit_new_flow",
+			"jn",
+			"Task",
+			"task",
+			"tasks",
+			"Create",
+			"create",
+			"Task",
+			"{'task_0': (True, 1), 'task_1': (True, 1), 'task_2': (True, 1), 'task_3': (True, 1)}",
+			"patch",
+			"routine",
+			"DetailView",
+			"flow",
+			"task",
+			"Routine",
+			"flow",
+			"Flow",
+			"items",
+			"routine_name",
+			"73",
+			"engine",
+			"run_flow_step",
+			"engine",
+			"'test",
+			"69",
+			"==",
+			"class ",
+			"    ",
+			",",
+			"    ",
+			",",
+			"Singa",
+			"United",
+			"frankf",
+			"Amsterdam",
+			"countries",
+			"states",
+			"\"name\":",
+			"FRA",
+			",-",
+			", ",
+			", -",
+			",  ",
+			"AK,  ",
+			", ",
+			" ",
+			"    ",
+			"   ",
+			"  ",
+			"csvfile",
+			"lc(",
+			"h",
+			"co",
+			"\"url\": \"/v1/",
+			"ul"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"url\": \""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 471,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								471,
+								471
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"default_dir": "C:\\Users\\jay\\Documents\\projects\\state-machine\\docs",
+							"incomplete_sync": null,
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.440993783068,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.autopep8":
+	{
+		"height": 114.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 114.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 249.0
+	},
+	"pinned_build_system": "",
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"jquer",
+				"strangemother-site\\qr\\qrcodejs-master\\qrcodejs-master\\jquery.min.js"
+			],
+			[
+				"kamp.",
+				"hosting\\bootstrap\\structure\\kamp.py"
+			],
+			[
+				"form.",
+				"hosting\\heavymetal\\templates\\heavymetal\\form.html"
+			],
+			[
+				"settngbase.py",
+				"hosting\\hosting\\settings\\base.py"
+			],
+			[
+				"vultr",
+				"env3\\Lib\\site-packages\\vultr\\vultr.py"
+			],
+			[
+				"wordpress instance",
+				"hosting\\autodocs\\uapi\\WordPressInstanceManager\\WordPressInstanceManager-get_instances.json"
+			],
+			[
+				"remove_in_progress_exim_config_edit",
+				"hosting\\autodocs\\uapi\\Server Administration\\remove_in_progress_exim_config_edit.json"
+			],
+			[
+				"colors.js",
+				"babylon\\garden\\js\\display\\colors.js"
+			],
+			[
+				"it.",
+				"babylon\\garden\\js\\vendors\\it.js"
+			],
+			[
+				"virtualJoystick",
+				"babylon\\garden\\js\\vendors\\converted\\virtualJoystick.js"
+			],
+			[
+				"garden",
+				"babylon\\alpha\\js-v3\\lib\\garden.js"
+			],
+			[
+				"target",
+				"babylon\\alpha\\js-v3\\lib\\core\\targetAssignment.js"
+			],
+			[
+				"File",
+				"babylon\\garden\\js\\files.js"
+			],
+			[
+				"file",
+				"babylon\\garden\\js\\files.js"
+			],
+			[
+				"Garden",
+				"babylon\\garden\\js\\app\\Garden.js"
+			],
+			[
+				"garde",
+				"js-v3\\lib\\garden.js"
+			],
+			[
+				"displa",
+				"js-v3\\lib\\core\\display.js"
+			],
+			[
+				"utils.js",
+				"js-v3\\lib\\core\\utils.js"
+			],
+			[
+				"axis",
+				"js-v3\\apps\\axis.js"
+			],
+			[
+				"dev",
+				"js-v3\\lib\\extras\\dev.js"
+			],
+			[
+				"colors",
+				"js-v3\\lib\\babylon\\colors.js"
+			],
+			[
+				"core.",
+				"js-v3\\lib\\2d\\core.js"
+			],
+			[
+				"camera",
+				"js-v3\\lib\\babylon\\cameras.js"
+			],
+			[
+				"interface.js",
+				"js-v3\\lib\\core\\interface.js"
+			],
+			[
+				"axis.",
+				"js\\lib\\axis.js"
+			],
+			[
+				"files",
+				"js-v3\\files.js"
+			],
+			[
+				"lights.",
+				"js-v3\\lib\\babylon\\lights.js"
+			],
+			[
+				"files.j",
+				"js-v3\\files.js"
+			],
+			[
+				"livepr",
+				"js-v3\\lib\\core\\liveProperties.js"
+			],
+			[
+				"shapes.",
+				"js-v3\\lib\\babylon\\shapes.js"
+			],
+			[
+				"light",
+				"js-v2\\lib\\Light.js"
+			],
+			[
+				"app.",
+				"js-v3\\app.js"
+			],
+			[
+				"main",
+				"css\\main.css"
+			],
+			[
+				"liveprop",
+				"js-v3\\lib\\core\\liveProperties.js"
+			],
+			[
+				"view.",
+				"js-v3\\view.js"
+			],
+			[
+				"utils",
+				"js-v3\\lib\\core\\utils.js"
+			],
+			[
+				"children",
+				"js-v3\\lib\\core\\children.js"
+			],
+			[
+				"apps",
+				"js-v3\\app.js"
+			],
+			[
+				"colors.",
+				"js-v3\\lib\\babylon\\colors.js"
+			],
+			[
+				"particle",
+				"js-v3\\apps\\particles.js"
+			],
+			[
+				"",
+				"js-v3\\app_animateboxes.js"
+			],
+			[
+				"main.",
+				"css\\main.css"
+			],
+			[
+				"utils.",
+				"js-v3\\lib\\core\\utils.js"
+			],
+			[
+				"config",
+				"js-v3\\config.js"
+			],
+			[
+				"main.c",
+				"css\\main.css"
+			],
+			[
+				"displ",
+				"js-v3\\lib\\core\\display.js"
+			],
+			[
+				"in",
+				"js-v3\\lib\\core\\interface.js"
+			],
+			[
+				"adapter",
+				"js-v3\\lib\\core\\adapter.js"
+			],
+			[
+				"interf",
+				"js-v3\\lib\\core\\interface.js"
+			],
+			[
+				"form",
+				"pages\\server\\pages\\forms.html"
+			],
+			[
+				"virtualjoy",
+				"babylon\\js\\babylon\\src\\Tools\\babylon.virtualJoystick.js"
+			],
+			[
+				"gamepad",
+				"babylon\\js\\babylon\\src\\Cameras\\babylon.gamepadCamera.js"
+			],
+			[
+				"bablyon/.html",
+				"babylon\\index.html"
+			],
+			[
+				"assets.json",
+				"pages\\server\\js\\uplink\\assets.json"
+			],
+			[
+				"vendor",
+				"pages\\server\\js\\vendors.json"
+			],
+			[
+				"router.",
+				"pages\\server\\pages\\router.html"
+			],
+			[
+				"delegt",
+				"pages\\javascript\\base\\Delegate.js"
+			],
+			[
+				"events.",
+				"pages\\javascript\\Events.js"
+			],
+			[
+				"editor",
+				"pages\\server\\pages\\editor.html"
+			],
+			[
+				"router.css",
+				"pages\\server\\css\\pages\\router.css"
+			],
+			[
+				"router.html",
+				"pages\\server\\pages\\router.html"
+			],
+			[
+				"video",
+				"pages\\server\\pages\\video.html"
+			],
+			[
+				"template",
+				"pages\\javascript\\view\\TemplateList.js"
+			],
+			[
+				"remote",
+				"pages\\javascript\\data\\Remote.js"
+			],
+			[
+				"action.",
+				"pages\\javascript\\view\\Action.js"
+			],
+			[
+				"editor.css",
+				"pages\\server\\css\\editor.css"
+			],
+			[
+				"editor.html",
+				"pages\\server\\pages\\editor.html"
+			],
+			[
+				"keyboard.j",
+				"pages\\javascript\\Keyboard.js"
+			],
+			[
+				"templ",
+				"pages\\javascript\\view\\Template.js"
+			],
+			[
+				"action",
+				"pages\\javascript\\view\\Action.js"
+			],
+			[
+				"templat",
+				"pages\\javascript\\view\\Template.js"
+			],
+			[
+				"mock.",
+				"pages\\server\\pages\\mock.html"
+			],
+			[
+				"files.css",
+				"pages\\server\\css\\pages\\files.css"
+			],
+			[
+				"coreclass",
+				"babylon\\js\\lib\\CoreClass.js"
+			],
+			[
+				"it.js",
+				"CottonDuck\\src\\cotton\\vendor\\it.js"
+			],
+			[
+				"storage",
+				"files\\env\\Lib\\site-packages\\CodernityDB\\storage.py"
+			],
+			[
+				"scandir",
+				"files\\env\\Lib\\site-packages\\scandir.py"
+			],
+			[
+				"vrep.",
+				"flight-vision\\vrep.py"
+			],
+			[
+				"coffee.css",
+				"coffee\\static\\css\\coffee.css"
+			],
+			[
+				"index.js",
+				"coffee\\reserved\\static\\reserved\\js\\index.js"
+			],
+			[
+				"coffee",
+				"coffee\\static\\css\\coffee.css"
+			],
+			[
+				"index.css",
+				"coffee\\static\\css\\index.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 351.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

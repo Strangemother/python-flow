@@ -1,0 +1,4 @@
+[console_scripts]
+flow-consumer = flow.consumer:consumer_main
+flow-machine = flow.consumer:consumer_default_main
+
