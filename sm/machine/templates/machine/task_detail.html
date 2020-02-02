@@ -1,0 +1,12 @@
+{% extends "machine/base.html" %}
+{% block content %}
+
+<h1>Task {{ object.pk }}</h1>
+
+<ul>
+    <li>key: {{ object.key }}</li>
+    <li>Name: {{ object.name }}</li>
+    <li>Script: {{ object.script }}</li>
+</ul>
+
+{% endblock content %}

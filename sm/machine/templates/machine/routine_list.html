@@ -1,0 +1,14 @@
+{% extends "machine/base.html" %}
+{% block content %}
+
+<h1>Routine</h1>
+
+<p>A Routine defines a list of ordered executable Tasks for a Flow.</p>
+
+<ul>
+    {% for routine in object_list %}
+    <li><a href='{% url "routine-detail" routine.pk %}'>{{ routine }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

@@ -20,6 +20,12 @@ from . import views
 
 urlpatterns = [
     #path('', admin.site.urls),
+    path('', views.MachineIndexView.as_view(), name='machine-index'),
     path('flows/', views.FlowListView.as_view(), name='flow-list'),
     path('flows/<slug:pk>/', views.FlowDetailView.as_view(), name='flow-detail'),
+    path('routines/', views.RoutineListView.as_view(), name='routine-list'),
+    path('routines/<slug:pk>', views.RoutineDetailView.as_view(), name='routine-detail'),
+    path('tasks/', views.TaskListView.as_view(), name='task-list'),
+    path('tasks/create/', views.TaskCreateView.as_view(), name='task-create'),
+    path('task/<slug:pk>', views.TaskDetailView.as_view(), name='task-detail'),
 ]

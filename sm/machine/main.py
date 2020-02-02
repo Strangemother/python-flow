@@ -234,7 +234,6 @@ def spawn_task(orig_task, sig_result):
         import pdb; pdb.set_trace()  # breakpoint e1176247 //
 
 
-
 def spawn_flow(orig_task, sig_result):
     args = getattr(sig_result, 'args', ())
     kwargs = getattr(sig_result, 'kwargs', {})
@@ -266,6 +265,7 @@ def spawn_flow(orig_task, sig_result):
         log('*  Good. Spawn saved against flow.')
 
     return _spawn_task
+
 
 def spawn_script(orig_task, sig_result):
     args = getattr(sig_result, 'args', ())

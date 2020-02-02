@@ -1,0 +1,20 @@
+{% extends "machine/base.html" %}
+{% block content %}
+
+<h1>Routine {{ object.pk }}</h1>
+
+<ul>
+    <li>Name: {{ object.name }}</li>
+    <li>Size: {{ object.ordered_tasks|length }}</li>
+</ul>
+
+<h2>Routine {{ object.name }}</h2>
+<ol>
+    {% for task in object.ordered_tasks %}
+        <li>
+            <a href="{% url 'task-detail' task.pk %}">{{ task.name }} - {{ task.script }}</a>
+        </li>
+    {% endfor %}
+</ol>
+
+{% endblock content %}

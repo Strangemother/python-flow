@@ -111,7 +111,9 @@ def store_flow_and_step(flow, task, result):
         set_flow_done(flow)
     flow.save()
 
+
 store_and_step = store_flow_and_step
+
 
 def store_task_result(flow, task, res):
     """Given a db Flow , db Task and raw result, save the result as a TaskResult
