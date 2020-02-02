@@ -5,7 +5,7 @@ if conf.patch_conf['patched'] is False:
     from gevent import monkey; monkey.patch_all()
     from huey import SqliteHuey
 
-    if patch_conf['django'] is not False:
+    if conf.patch_conf.get('django', None) is not False:
         from machine import django_connect
         django_connect.safe_bind()
 

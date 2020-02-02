@@ -4,7 +4,6 @@ import os
 import time
 
 from machine import patch
-
 from huey import SqliteHuey
 
 from machine import models, create
@@ -16,9 +15,12 @@ from machine.task import get_current_task, get_routine_task
 from machine.log import p_cyan_log
 log = p_cyan_log('main')
 
+import os
+
+ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # The remote running lib.
-huey = SqliteHuey(filename='sm-huey.db')
+huey = SqliteHuey(filename=os.path.join(ROOT, 'sm-huey.db'))
 
 
 def submit_create_flow(routine, *a, routine_name=None, init_flow_position=0, **kw):
@@ -72,6 +74,7 @@ def run_flow(flow_id, *a, **kw):
     """Running within the machine context, accept the flow id, gather a django
     Flow model and run `engine.run_all_flow(flow)`.
     """
+    print('Run', flow_id)
     flow = get_flow(flow_id)
     log('+ Task', flow.routine.name, a, kw)
     #flow = models.Flow.objects.get(pk=flow_id)

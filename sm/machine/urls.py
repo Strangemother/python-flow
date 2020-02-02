@@ -22,6 +22,10 @@ urlpatterns = [
     #path('', admin.site.urls),
     path('', views.MachineIndexView.as_view(), name='machine-index'),
     path('flows/', views.FlowListView.as_view(), name='flow-list'),
+    path('flows/create-complex/', views.ComplexFlowCreateView.as_view(), name='flow-create-complex'),
+    path('flows/create/', views.FlowCreateView.as_view(), name='flow-create'),
+    path('flows/run/', views.RunFlowFormView.as_view(), name='flow-run'),
+
     path('flows/<slug:pk>/', views.FlowDetailView.as_view(), name='flow-detail'),
     path('routines/', views.RoutineListView.as_view(), name='routine-list'),
     path('routines/<slug:pk>', views.RoutineDetailView.as_view(), name='routine-detail'),

@@ -40,7 +40,6 @@ class FlowTestCase(TestCase):
 
         self.flow.run_all()
 
-
         self.assertEqual(run_task.call_count, self.task_count)
         # calls = [call(<Task: task_0 - "task_0">, all_flow_results=task_args),
         #     call(<Task: task_1 - "task_1">, all_flow_results=task_args),

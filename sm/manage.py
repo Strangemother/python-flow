@@ -3,6 +3,9 @@
 import os
 import sys
 
+from gevent import monkey; monkey.patch_all()
+
+
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sm.settings')
