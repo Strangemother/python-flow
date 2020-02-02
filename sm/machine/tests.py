@@ -1,8 +1,12 @@
 from unittest import mock
 from django.test import TestCase
+
+from machine import conf
+conf.patch_conf['patched'] = True
+
 from machine import engine
 from machine import models
-
+from unittest.mock import call
 
 class FlowTestCase(TestCase):
     task_count = 4
@@ -30,11 +34,23 @@ class FlowTestCase(TestCase):
             owner='test',
         )
 
-    @mock.patch('machine.engine.run_task',
+    @mock.patch('machine.task.run_task',
         return_value=(True, 1))
     def test_full_flow(self, run_task):
-        self.flow.run_all()
-        self.assertEqual(
-            run_task.call_count, self.task_count
-        )
 
+        self.flow.run_all()
+
+
+        self.assertEqual(run_task.call_count, self.task_count)
+        # calls = [call(<Task: task_0 - "task_0">, all_flow_results=task_args),
+        #     call(<Task: task_1 - "task_1">, all_flow_results=task_args),
+        #     call(<Task: task_2 - "task_2">, all_flow_results=task_args),
+        #     call(<Task: task_3 - "task_3">, all_flow_results=task_args)]
+        task_args = {f'task_{i}': (True, 1) for i in range(self.task_count)}
+        cl = run_task.call_args_list
+
+        for i, (args, kwargs) in zip(range(len(cl)), cl):
+            task = args[0]
+            expected_kwargs = {'all_flow_results': task_args}
+            self.assertEqual(task.key, f'task_{i}')
+            self.assertEqual(kwargs, expected_kwargs)

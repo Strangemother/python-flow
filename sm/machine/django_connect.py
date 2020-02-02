@@ -32,6 +32,7 @@ def setup():
 
 
 def bind():
+    print('Mutate bind')
     mutate()
     setup()
 

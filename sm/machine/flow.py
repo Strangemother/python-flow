@@ -104,7 +104,8 @@ def store_flow_and_step(flow, task, result):
     If the position is the end of the flow, flag 'done'
     """
     # flow.state = 'COMPLETE'
-    store_task_result(flow, task, result)
+    if result is not None:
+        store_task_result(flow, task, result)
     flow.position += 1
     if flow.position >= flow.length():
         log('  Done.')
