@@ -2,6 +2,8 @@
 
 #from machine import main as mac
 from machine import engine
+import machine.create
+
 from machine.models import Flow
 
 f = Flow.objects.first()
@@ -18,13 +20,13 @@ def new_flow():
     routine = ('very_long',
                'download',
                'send_text',)
-    flow, fid = mac.submit_new_flow(routine, 'new_flow')
+    flow, fid = engine.submit_create_flow(routine, routine_name='new_flow')
     print('Submitted')
 
 
 def main(flow_id=69):
 
-    key = 74
+    key = 105
     # flow = create_sleepy_flow()
     print('Submitting flow', key)
     reset(key)
@@ -54,7 +56,7 @@ def crt():
         'being.Singing',
         'talk.Twice',
         )
-    return mac.create.routine_tasks('bob', items)
+    return machine.create.routine_tasks('bob', items)
 
 
 from machine import create
