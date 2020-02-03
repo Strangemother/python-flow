@@ -1,7 +1,6 @@
 ---
 title: "Installation"
-date: 2021-10-17T14:00:45Z
-draft: true
+draft: false
 TableOfContents: true
 weight: 10
 ---
